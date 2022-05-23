@@ -1,37 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
 export default function App() {
-  const [name, setName] = useState("mano");
-  const [newName, setNewName] = useState("mano");
-  const img = "https://i.scdn.co/image/ab6761610000e5eb9ecfcee83a3e86d021033107"
 
-  //index
   return (
-    <View style={styles.container}>
-      <TextInput style={styles.input} onChangeText={text => setName(text)} />
-      <Button title='send' onPress={()=> setNewName(name)}/>
-      <Text>Hello {newName}!</Text>
-      <Galeno name={newName} img={img} />
-    </View>
-  );
-}
-
-// component
-export function Galeno({ name, img }) {
-  return (
-    <View style={styles.container}>
-      <Text style={{ color: "red" }}>Oi!</Text>
-      <StatusBar style="auto" />
-      <Image
-        style={styles.picture}
-        source={{
-          uri: img
-        }} />
-      <Text>
-        {name}
-      </Text>
+    <View style={[styles.container, styles.jcEvenly, styles.aiCenter, styles.Row]}>
+      <View style={styles.box} />
+      <View style={styles.box} />
+      <View style={styles.box} />
     </View>
   );
 }
@@ -40,20 +16,53 @@ export function Galeno({ name, img }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 50,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#222'
   },
-  picture: {
-    width: 250,
-    height: 250,
-  },
-  input: {
-    width: 250,
+  box:{
+    width: 50,
     height: 50,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 50
-  }
+    backgroundColor: '#fff'
+  },
+  jcCenter: {
+    justifyContent: "center"
+  },
+  jcEnd: {
+    justifyContent: "flex-end"
+  },
+  jcStart: {
+    justifyContent: "flex-start"
+  },
+  jcBetween: {
+    justifyContent: "space-between"
+  },
+  jcAround: {
+    justifyContent: "space-around"
+  },
+  jcEvenly: {
+    justifyContent: "space-evenly"
+  },
+  aiCenter: {
+    alignItems: "center"
+  },
+  aiEnd: {
+    alignItems: "flex-end"
+  },
+  aiStart: {
+    alignItems: "flex-start"
+  },
+  aiBetween: {
+    alignItems: "space-between"
+  },
+  aiAround: {
+    alignItems: "space-around"
+  },
+  aiEvenly: {
+    alignItems: "space-evenly"
+  },
+  Row: {
+    flexDirection: "row"
+  },
+  Col: {
+    flexDirection: "column"
+  },
 });
