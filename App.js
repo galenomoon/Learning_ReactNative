@@ -1,17 +1,49 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Text } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Image,
+  Text
+} from 'react-native';
 
 export default function App() {
-const [name, setName] = useState('menó');
+  const [text, setText] = useState('Por e pra você, pra sempre');
+  const texts = [
+    'Eu te amo.',
+    'Seus olhos são castanho estelar.',
+    'Você é o meu ápice da lua cheia.',
+    'Teu Bom dia faz o meu dia muito mais belp.',
+    'Por e pra você, pra sempre.',
+    'Eu quero me casar contigo.',
+    'Você é o meu mundo.',
+    'A nossa vibe é surreal',
+    'ja disse q te amo?',
+    'Às vezes eu só preciso parar de correr um pouco, pra enxergar o que esta comigo agora'
+  ]
+
+  randomText = () => {
+    let text = texts[Math.floor(Math.random() * texts.length)];
+    setText(text);
+  }
+
   return (
     <View style={[styles.container, styles.jcEvenly, styles.aiCenter, styles.Col]}>
-      <View style={[styles.box, styles.aiCenter]} >
-        <Text>Olá {name}{name.length !== 0 && ", Bem vindo"}</Text>
-        <TextInput 
-        style={styles.input} 
-        placeholder="Enter your name" 
-        onChangeText={(text) => setName(text)}
-        />
+      <Image
+        source={require('./src/img/fortune_closed.png')}
+        style={styles.img}
+      />
+      <Text style={styles.mainText}>
+        "{text}"
+      </Text>
+      <View style={[styles.jcEvenly, styles.aiCenter, styles.Col]}>
+        <TouchableOpacity onPress={()=> randomText()}>
+          <View style={[styles.btn, styles.jcCenter, styles.aiCenter]}>
+            <Text style={styles.text}>
+              Break Cookie
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -23,14 +55,29 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#333'
   },
-  input: {
-    height: 40,
-    borderWidth: 1,
-    borderColor: '#222',
-    borderRadius: 5,
-    margin: 5,
-    paddingHorizontal: 40,
-    paddingVertical: 0,
+  btn: {
+    height: 50,
+    paddingHorizontal: 20,
+    borderWidth: 2,
+    borderColor: '#dd7b22',
+    borderRadius: 25,
+    marginTop: 20
+  },
+  img: {
+    width: 200,
+    height: 200
+  },
+  text: {
+    color: '#dd7b22',
+    fontSize: 15,
+  },
+  mainText: {
+    color: '#dd7b22',
+    fontSize: 25,
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+    marginVertical: 20,
+    textAlign: 'center'
   },
   box: {
     backgroundColor: '#fff',
