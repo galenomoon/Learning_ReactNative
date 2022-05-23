@@ -1,13 +1,18 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, TextInput, Text } from 'react-native';
 
 export default function App() {
-
+const [name, setName] = useState('menó');
   return (
-    <View style={[styles.container, styles.jcEvenly, styles.aiCenter, styles.Row]}>
-      <View style={styles.box} />
-      <View style={styles.box} />
-      <View style={styles.box} />
+    <View style={[styles.container, styles.jcEvenly, styles.aiCenter, styles.Col]}>
+      <View style={[styles.box, styles.aiCenter]} >
+        <Text>Olá {name}{name.length !== 0 && ", Bem vindo"}</Text>
+        <TextInput 
+        style={styles.input} 
+        placeholder="Enter your name" 
+        onChangeText={(text) => setName(text)}
+        />
+      </View>
     </View>
   );
 }
@@ -16,12 +21,21 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#222'
+    backgroundColor: '#333'
   },
-  box:{
-    width: 50,
-    height: 50,
-    backgroundColor: '#fff'
+  input: {
+    height: 40,
+    borderWidth: 1,
+    borderColor: '#222',
+    borderRadius: 5,
+    margin: 5,
+    paddingHorizontal: 40,
+    paddingVertical: 0,
+  },
+  box: {
+    backgroundColor: '#fff',
+    padding: 10,
+    borderRadius: 5,
   },
   jcCenter: {
     justifyContent: "center"
