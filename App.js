@@ -8,7 +8,64 @@ import {
 } from 'react-native';
 
 export default function App() {
-  const [text, setText] = useState('Por e pra você, pra sempre');
+  return (
+    <View style={[styles.container, styles.jcEvenly, styles.aiCenter, styles.Col]}>
+      <Timer />
+    </View>
+  );
+}
+export function Timer() {
+  const [time, setTime] = useState(0);
+  const [timer, setTimer] = useState(null);
+
+  const start = () => {
+    if (timer === null) {
+      const timer = setInterval(() => {
+        setTime(time => time + 0.1);
+      }, 100);
+      setTimer(timer);
+
+    } else {
+      clearInterval(timer);
+      setTimer(null);
+    }
+  }
+  const clear = () => {
+    setTime(0);
+  }
+
+  return (
+    <View>
+      <Image
+        source={require('./src/img/timer.png')}
+        style={styles.timer}
+        tintColor='#fff'
+      />
+      <Text style={styles.time}>
+        {time.toFixed(1)}
+      </Text>
+      <View style={styles.btnArea}>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={start}>
+          <Text style={styles.text}>
+           {timer === null ? 'Start' : 'Stop'} 
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={clear}>
+          <Text style={styles.text}>
+            Clear
+          </Text>
+        </TouchableOpacity>
+      </View >
+    </View>
+  )
+}
+
+export function FortuneBiscuit() {
+  const [text, setText] = useState('Bem-vindo ao Fortune Biscuit!');
   const texts = [
     'Eu te amo.',
     'Seus olhos são castanho estelar.',
@@ -22,7 +79,7 @@ export default function App() {
     'Às vezes eu só preciso parar de correr um pouco, pra enxergar o que esta comigo agora'
   ]
 
-  randomText = () => {
+  function randomText() {
     let text = texts[Math.floor(Math.random() * texts.length)];
     setText(text);
   }
@@ -37,7 +94,7 @@ export default function App() {
         "{text}"
       </Text>
       <View style={[styles.jcEvenly, styles.aiCenter, styles.Col]}>
-        <TouchableOpacity onPress={()=> randomText()}>
+        <TouchableOpacity onPress={() => randomText()}>
           <View style={[styles.btn, styles.jcCenter, styles.aiCenter]}>
             <Text style={styles.text}>
               Break Cookie
@@ -57,26 +114,47 @@ const styles = StyleSheet.create({
   },
   btn: {
     height: 50,
-    paddingHorizontal: 20,
+    paddingHorizontal: 40,
     borderWidth: 2,
-    borderColor: '#dd7b22',
-    borderRadius: 25,
-    marginTop: 20
+    borderColor: '#FFF',
+    borderRadius: 9,
+    marginTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  btnArea: {
+    marginTop: 80,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center'
+  },
+  timer: {
+    width: 300,
+    height: 300,
   },
   img: {
     width: 200,
     height: 200
   },
   text: {
-    color: '#dd7b22',
+    color: '#FFF',
     fontSize: 15,
   },
   mainText: {
-    color: '#dd7b22',
+    color: '#FFF',
     fontSize: 25,
     fontWeight: 'bold',
     fontStyle: 'italic',
     marginVertical: 20,
+    textAlign: 'center'
+  },
+  time: {
+    color: '#FFF',
+    fontSize: 40,
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+    marginVertical: 20,
+    marginTop: -110,
     textAlign: 'center'
   },
   box: {
