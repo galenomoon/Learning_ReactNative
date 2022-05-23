@@ -4,16 +4,78 @@ import {
   View,
   TouchableOpacity,
   Image,
-  Text
+  Text,
+  ScrollView,
+  FlatList
 } from 'react-native';
 
 export default function App() {
   return (
-    <View style={[styles.container, styles.jcEvenly, styles.aiCenter, styles.Col]}>
-      <Timer />
+    <View style={scrollView.container}>
+     <FlatLists/>
     </View>
   );
 }
+// FlatList
+export function FlatLists() {
+  const [feed, setFeed] = useState([
+    {
+      name: 'Galeno',
+      age: '19',
+      email: 'gui.galenocover@gmail.com'
+    },
+    {
+      name: 'Luana',
+      age: '19',
+      email: 'luasantiago@gmail.com'
+    },
+    {
+      name: 'Gusta',
+      age: '19',
+      email: 'aeromodelo123@gmail.com'
+    }
+    ,
+    {
+      name: 'Isa',
+      age: '13',
+      email: 'isabellagaleno@gmail.com'
+    }
+  ])
+  return (
+    <View style={scrollView.container}>
+      <FlatList
+        data={feed}
+        renderItem={({item})=> <People data={item}/> }
+      />
+    </View>
+  );
+}
+export function People({data}) {
+  return(
+    <View style={scrollView.container}>
+      <View style={scrollView.item}>
+        <Text>{data.name}</Text>
+        <Text>{data.age}</Text>
+        <Text>{data.email}</Text>
+      </View>
+    </View>
+  )
+}
+// ScrollView
+export function ScrollViews() {
+  return (
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      showsHorizontalScrollIndicator={false}
+    >
+      <View style={scrollView.box1}></View>
+      <View style={scrollView.box2}></View>
+      <View style={scrollView.box3}></View>
+      <View style={scrollView.box4}></View>
+    </ScrollView>
+  )
+}
+// Timer
 export function Timer() {
   const [time, setTime] = useState(0);
   const [timer, setTimer] = useState(null);
@@ -49,7 +111,7 @@ export function Timer() {
           style={styles.btn}
           onPress={start}>
           <Text style={styles.text}>
-           {timer === null ? 'Start' : 'Stop'} 
+            {timer === null ? 'Start' : 'Stop'}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -63,7 +125,7 @@ export function Timer() {
     </View>
   )
 }
-
+// FortuneBiscuit
 export function FortuneBiscuit() {
   const [text, setText] = useState('Bem-vindo ao Fortune Biscuit!');
   const texts = [
@@ -105,7 +167,6 @@ export function FortuneBiscuit() {
     </View>
   );
 }
-
 // styles
 const styles = StyleSheet.create({
   container: {
@@ -205,3 +266,25 @@ const styles = StyleSheet.create({
     flexDirection: "column"
   },
 });
+const scrollView = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  box1: {
+    backgroundColor: 'red',
+    height: 250,
+  },
+  box2: {
+    backgroundColor: 'green',
+    height: 250,
+  },
+  box3: {
+    backgroundColor: 'blue',
+    height: 250,
+  },
+  box4: {
+    backgroundColor: 'yellow',
+    height: 250,
+  },
+
+})
