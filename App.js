@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TouchableOpacity, Image, Text, ScrollView }from 'react-native';
-import FlatLists from './src/components/FlatList/FlatLists';
-import FortuneBiscuit from './src/components/FortuneBiscuit/FortuneBiscuit';
-import Timer from './src/components/Timer/Timer';
-import ScrollViews from './src/components/ScrollViews/ScrollViews';
+import FlatLists from './src/components/FlatList';
+import FortuneBiscuit from './src/components/FortuneBiscuit';
+import Timer from './src/components/Timer';
+import ScrollViews from './src/components/ScrollViews';
+import Pickers from './src/components/Picker';
 
 export default function App() {
   return (
     <View style={styles.container}>
-     {/* <FlatLists/> */}
-     {/* <FortuneBiscuit/> */}
-     {/* <ScrollViews/> */}
-     {/* <Timer/> */}
+      <Pickers/>
     </View>
   );
 }
