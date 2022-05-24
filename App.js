@@ -19,31 +19,48 @@ export default function App() {
 // FlatList
 export function FlatLists() {
   const [feed, setFeed] = useState([
-    {
+    { 
+      id: '1',
       name: 'Galeno',
       age: '19',
       email: 'gui.galenocover@gmail.com'
     },
     {
+      id: '2',
       name: 'Luana',
       age: '19',
       email: 'luasantiago@gmail.com'
     },
     {
+      id: '3',
       name: 'Gusta',
       age: '19',
       email: 'aeromodelo123@gmail.com'
     }
     ,
     {
-      name: 'Isa',
+      id: '4',
+      name: 'Isabella',
+      age: '13',
+      email: 'isabellagaleno@gmail.com'
+    } ,
+    {
+      id: '5',
+      name: 'Isabella',
+      age: '13',
+      email: 'isabellagaleno@gmail.com'
+    } ,
+    {
+      id: '6',
+      name: 'Isabella',
       age: '13',
       email: 'isabellagaleno@gmail.com'
     }
   ])
   return (
-    <View style={scrollView.container}>
+    <View style={[styles.jcCenter]}>
       <FlatList
+      keyExtractor={(item) => item.id}
         data={feed}
         renderItem={({item})=> <People data={item}/> }
       />
@@ -53,10 +70,10 @@ export function FlatLists() {
 export function People({data}) {
   return(
     <View style={scrollView.container}>
-      <View style={scrollView.item}>
-        <Text>{data.name}</Text>
-        <Text>{data.age}</Text>
-        <Text>{data.email}</Text>
+      <View style={scrollView.items}>
+        <Text style={scrollView.item} >Name: {data.name}</Text>
+        <Text style={scrollView.item} >Age: {data.age}</Text>
+        <Text style={scrollView.item} >Email: {data.email}</Text>
       </View>
     </View>
   )
@@ -269,6 +286,22 @@ const styles = StyleSheet.create({
 const scrollView = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#333',
+    justifyContent: 'center',
+
+  },
+  item:{
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  items : {
+    height: 200,
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    margin: 10,
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   box1: {
     backgroundColor: 'red',
