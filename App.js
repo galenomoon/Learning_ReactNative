@@ -16,8 +16,8 @@ export default function App() {
         <Text style={styles.h1}>Learning React-Native</Text>
       </View> */}
       {/* <View style={styles.body}> */}
-        <InstaGaleno/>
-        {/* <Switches /> */}
+        {/* <InstaGaleno/> */}
+        <Switches />
         {/* {console.log("ss")} */}
       {/* </View> */}
     </View>
