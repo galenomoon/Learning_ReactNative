@@ -18,7 +18,10 @@ export default function App() {
       {/* <View style={styles.body}> */}
         {/* <InstaGaleno/> */}
         <Switches />
-        {/* {console.log("ss")} */}
+        {/* <Sliders /> */}
+        {/* <Pickers /> */}
+        {/* <FortuneBiscuit /> */}
+        {/* <Timer /> */}
       {/* </View> */}
     </View>
   );
